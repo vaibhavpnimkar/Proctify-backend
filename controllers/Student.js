@@ -69,7 +69,7 @@ const registerStudent = async (req, res) => {
 
 const createCollection = async (req, res) => {
   const createCollectionParams = {
-    CollectionId: "justtryingfacedetection",
+    CollectionId: "justtryingfacedetection2",
   };
 
   rekognition.createCollection(createCollectionParams, (err, data) => {

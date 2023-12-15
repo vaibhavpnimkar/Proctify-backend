@@ -6,7 +6,7 @@ const rekognition = new AWS.Rekognition();
 // Register a face with Rekognition
 async function registerFaceWithRekognition(userId, imageUrl) {
   const params = {
-    CollectionId: "justtryingfacedetection", // Replace with your Rekognition collection ID
+    CollectionId: "justtryingfacedetection2", // Replace with your Rekognition collection ID
     Image: {
       S3Object: {
         Bucket: "tryinfacedetection",
@@ -46,7 +46,7 @@ async function detectFacesWithRekognition(imageUrl) {
 }
 async function matchFaceWithRekognitionCollection(imageBase64Data) {
   const params = {
-    CollectionId: "justtryingfacedetection", // Replace with your Rekognition collection ID
+    CollectionId: "justtryingfacedetection2", // Replace with your Rekognition collection ID
     Image: {
       Bytes: Buffer.from(imageBase64Data, "base64"),
     },
