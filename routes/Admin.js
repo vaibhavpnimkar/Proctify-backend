@@ -3,7 +3,7 @@ const router = express.Router();
 
 const {
   forgotPasswordAdmin,
-  loginAdmin,
+  loginAdmin, 
   registerAdmin,
   changeAdminPassword,
   adminVerifyOTP,
