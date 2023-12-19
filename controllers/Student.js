@@ -599,6 +599,8 @@ const emailVerification = async(req,res)=>{
   
 }
 
+
+
 module.exports = {
   forgotPasswordStudent,
   loginStudent,
