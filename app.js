@@ -108,6 +108,24 @@ app.post(
     res.status(200).json({ res: "Success" });
   }
 );
+
+// route for chat message getting and posting in DB.
+app.post("/api/v1/chat", async (req, res) => {
+  const { admin_name, message, sid } = req.body;
+  const response = await pool.query(
+    `insert into chat(admin,message,sid,timestamp) values('${admin_name}','${message}','${sid}', '${new Date().toTimeString()}');`
+  );
+  res.status(200).json({ res: "Success" });
+});
+
+app.get("/api/v1/chat/:sid", async (req, res) => {
+  const { sid } = req.params;
+  const response = await pool.query(
+    `select * from chat where sid = '${sid}' order by timestamp;`
+  );
+  res.status(200).json({ res: response.rows });
+});
+
 //routes admin
 app.use("/api/v1/admin", adminRouter);
 //routes student
