@@ -15,7 +15,6 @@ const mediasoup = require("mediasoup");
 
 
 
-
 // for cold start issue
 async function queryDatabase() {
   const client = await pool.connect();
