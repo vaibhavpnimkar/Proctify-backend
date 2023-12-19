@@ -180,10 +180,11 @@ httpsServer.listen(3002, () => {
 
 const io = new Server(httpsServer, {
   cors: {
-    origin: 'http://localhost:3002', // Update this with your client's origin
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 });
+
 
 // socket.io namespace (could represent a room?)
 const connections = io.of('/mediasoup')
