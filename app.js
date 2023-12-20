@@ -15,8 +15,6 @@ const mediasoup = require("mediasoup");
 
 
 
-const { Server } = ('socket.io')
-const mediasoup =( 'mediasoup')
 // for cold start issue
 async function queryDatabase() {
   const client = await pool.connect();
