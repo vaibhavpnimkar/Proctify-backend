@@ -158,6 +158,20 @@ app.post('/api/v1/webcam_detect', async (req, res) => {
     ).catch(err => console.log(err));
 });
 
+app.post('/api/v1/createRoom', async (req, res) => {
+  const { roomName, data } = req.json;
+  console.log('createRoom', roomName, data);
+  const response = await pool.query('insert into rooms(room_name, data) values($1, $2)', [roomName, data]);
+  res.status(200).json({ res: "Success" });
+});
+
+app.get('/api/v1/getRoom/:roomName', async (req, res) => {
+  const { roomName } = req.params;
+  const response = await pool.query('select * from rooms where room_name = $1', [roomName]);
+  res.status(200).json({ res: response.rows });
+});
+
+
 // error handler
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
