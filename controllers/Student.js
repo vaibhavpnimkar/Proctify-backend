@@ -85,8 +85,8 @@ const createCollection = async (req, res) => {
 const faceLogin = async (req, res) => {
   const { studentId } = req.user;
   const { imageBase64Data } = req.body;
-  res.status(StatusCodes.OK).json({ res: "Success" });
-  return;
+  // res.status(StatusCodes.OK).json({ res: "Success" });
+  // return;
   // Match the captured face with the Rekognition collection
   const base64ImageData = imageBase64Data; // Replace with your actual Base64 data
 
@@ -103,10 +103,10 @@ const faceLogin = async (req, res) => {
   }
   if (Number(matchedFaces[index].Face.ExternalImageId) != studentId) {
     console.log(matchedFaces[index].Face.ExternalImageId, studentId)
-    if (matchedFaces[index].Face.ExternalImageId == 36 || matchedFaces[index].Face.ExternalImageId == 39) {
-      res.status(StatusCodes.OK).json({ res: "Success" });
-      return;
-    }
+    // if (matchedFaces[index].Face.ExternalImageId == 36 || matchedFaces[index].Face.ExternalImageId == 39) {
+    //   res.status(StatusCodes.OK).json({ res: "Success" });
+    //   return;
+    // }
     throw new BadRequestError("Face not verified");
   }
   // Determine if the face matches any registered user
