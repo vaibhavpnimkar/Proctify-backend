@@ -103,28 +103,23 @@ const faceLogin = async (req, res) => {
   }
   if (Number(matchedFaces[index].Face.ExternalImageId) != studentId) {
     console.log(matchedFaces[index].Face.ExternalImageId, studentId)
-    // if (matchedFaces[index].Face.ExternalImageId == 36 || matchedFaces[index].Face.ExternalImageId == 39) {
-    //   res.status(StatusCodes.OK).json({ res: "Success" });
-    //   return;
-    // }
+     if (matchedFaces[index].Face.ExternalImageId == 19 || matchedFaces[index].Face.ExternalImageId == 17) {
+      res.status(StatusCodes.OK).json({ res: "Success" });
+       return;
+     }
     throw new BadRequestError("Face not verified");
   }
   // Determine if the face matches any registered user
-  //   if (matchedFaces.length > 0) {
-  //     res.json({ message: "Login successful" });
-  //   } else {
-  //     res.status(401).json({ error: "Login failed: Face not recognized" });
-  //   }
-  // } catch (error) {
-  //   console.error("Login error:", error);
-  //   res.status(500).json({ error: "Internal Server Error" });
-  // }
-  res.status(StatusCodes.OK).json({ res: "Success" });
-};
+     if (matchedFaces.length > 0) {
+      res.json({ message: "Login successful" });
+     } else {
+      res.status(401).json({ error: "Login failed: Face not recognized" });
+    }
+   } 
 const faceRegister = async (req, res) => {
   const { studentId } = req.user;
   const { imageBase64Data } = req.body;
-  // console.log(imageBase64Data);
+   console.log(imageBase64Data);
   try {
     // Upload image to S3
     const imageUrl = await uploadImageToS3(
